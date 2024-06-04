@@ -1,0 +1,173 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito&display=swap');
+
+$primary-yellow: #F4E041;
+$secondary-blue: #00BDD3;
+$main-bg: #F8F8F8;
+$main-white: #FFFFFF;
+$main-text: rgba(0,0,0,0.87);
+
+
+@mixin button {
+  background: $primary-yellow;
+  color: $main-text;
+  border: none;
+  border-radius: 80px;
+  cursor: pointer;
+}
+
+@mixin heading {
+  font-size: 40px;
+  line-height: 40px;
+  margin-inline: auto;
+  text-align: center;
+}
+
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+  font-family: "Nunito", sans-serif;
+  font-weight: 400;
+}
+
+body {
+  background: $main-bg;
+  line-height: 26px;
+}
+
+
+.header {
+  background: $main-white;
+  width: 100%;
+  .nav {
+    margin-inline: auto;
+    padding-inline: 16px;
+    padding-block: 13px;
+    display: flex;
+    max-width: 1170px;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+
+    &-logo {
+      width: 104px;
+      height: 26px;
+    }
+
+    &-buttons {
+      display: flex;
+      gap: 10px;
+    }
+
+    &-button {
+      @include button;
+
+      &:nth-child(1) {
+        padding: 4px 29px;
+      }
+
+      &:nth-child(2) {
+        padding: 4px 22px 4px 23px;
+      }
+    }
+  }
+}
+
+
+.intro {
+  max-width: 1170px;
+  background: url(assets/intro-bg.jpeg);
+  background-position-y: bottom;
+  background-size: cover;
+  background-repeat: no-repeat;
+  margin-inline: auto;
+
+
+  .dark {
+    width: 100%;
+    background-color: rgba(0,0,0,0.5);
+    padding-top: 40px;
+    padding-bottom: 71px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &-heading {
+    @include heading;
+    max-width: 328px;
+    color: $main-white;
+    margin-bottom: 21px;
+  }
+
+
+  &-text {
+    color: $main-white;
+    max-width: 380px;
+    text-align: center;
+    margin-bottom: 32px;
+  }
+
+  &-button {
+    @include button;
+    padding: 4px 22px 4px 23px;
+  }
+}
+
+.users {
+
+  padding-top: 140px;
+
+
+  &-heading {
+    @include heading;
+    color: $main-text;
+    max-width: 328px;
+  }
+  
+  &-cards {
+    margin-block: 50px;
+    display: grid;
+    grid-template-columns: 1;
+    gap: 20px;
+    place-content: center;
+    align-items: center;
+  }
+
+
+  &-card {
+    background: $main-white;
+    border: 20px solid $main-white;
+    display: flex;
+    flex-direction: column;
+    max-width: 328px;
+    color: $main-text;
+    white-space: nowrap;
+    overflow: hidden;
+    text-align: center;
+
+    img {
+      width: 70px;
+      height: 70px;
+      border-radius: 50%;
+      object-fit: contain;
+      margin: 0px auto;
+    }
+
+    h3 {
+      margin-block: 20px; 
+    }
+  }
+
+
+  &-button {
+    @include button;
+    padding-block: 4px;
+    padding-left: 19px;
+    padding-right: 18px;
+    display: block;
+    margin: 0px auto;
+  }
+}
