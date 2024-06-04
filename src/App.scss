@@ -159,6 +159,10 @@ body {
     h3 {
       margin-block: 20px; 
     }
+
+    .user-email {
+      cursor: pointer;
+    }
   }
 
 
@@ -169,5 +173,19 @@ body {
     padding-right: 18px;
     display: block;
     margin: 0px auto;
+  }
+}
+
+.preloader {
+  animation: preloader 1.2s linear infinite;
+}
+
+
+@keyframes preloader {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
   }
 }

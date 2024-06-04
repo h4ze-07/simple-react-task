@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import photoCover from '../assets/photo-cover.svg';
+import preloader from '../assets/preloader.svg';
 
 const API = 'https://frontend-test-assignment-api.abz.agency/api/v1';
 
@@ -30,12 +31,12 @@ const Users = () => {
                             <img src={user.photo ? user.photo : photoCover} alt="user photo" />
                             <h3>{user.name}</h3>
                             <p>{user.position}</p>
-                            <p>{user.email}</p>
+                            <p className='user-email' title={user.email}>{user.email}</p>
                             <p>{user.phone}</p>
                         </div>
                     ))
                     :
-                    <h2>Loading...</h2>
+                    <img src={preloader} alt="preloader" className='preloader' />
             }
             </div>
             <button className='users-button'>Show more</button>
