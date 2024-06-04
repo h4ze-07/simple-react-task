@@ -4,6 +4,8 @@ import Header from './components/Header';
 import Intro from './components/Intro';
 import Users from './components/Users';
 
+export const API = 'https://frontend-test-assignment-api.abz.agency/api/v1';
+
 function App() {
 
 

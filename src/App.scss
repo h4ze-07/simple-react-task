@@ -5,7 +5,8 @@ $secondary-blue: #00BDD3;
 $main-bg: #F8F8F8;
 $main-white: #FFFFFF;
 $main-text: rgba(0,0,0,0.87);
-
+$text-grey: #7E7E7E;
+$aqua: #00BDD3;
 
 @mixin button {
   background: $primary-yellow;
@@ -13,6 +14,14 @@ $main-text: rgba(0,0,0,0.87);
   border: none;
   border-radius: 80px;
   cursor: pointer;
+  &:hover {
+    background: #FFE302;
+  }
+  &:disabled {
+    background: #B4B4B4;
+    color: rgba(255, 255, 255, 0.87);
+    cursor: not-allowed;
+  }
 }
 
 @mixin heading {
@@ -119,6 +128,7 @@ body {
 .users {
 
   padding-top: 140px;
+  padding-inline: 16px;
 
 
   &-heading {
@@ -130,10 +140,10 @@ body {
   &-cards {
     margin-block: 50px;
     display: grid;
-    grid-template-columns: 1;
+    grid-template-columns: repeat(1, 328px);
     gap: 20px;
+    justify-items: center;
     place-content: center;
-    align-items: center;
   }
 
 
@@ -142,7 +152,7 @@ body {
     border: 20px solid $main-white;
     display: flex;
     flex-direction: column;
-    max-width: 328px;
+    width: 100%;
     color: $main-text;
     white-space: nowrap;
     overflow: hidden;
@@ -173,11 +183,14 @@ body {
     padding-right: 18px;
     display: block;
     margin: 0px auto;
+    line-height: 26px;
   }
 }
 
 .preloader {
   animation: preloader 1.2s linear infinite;
+  margin: 50px auto;
+  display: block;
 }
 
 
@@ -187,5 +200,202 @@ body {
   }
   100% {
     transform: rotate(360deg);
+  }
+}
+
+
+.form-section {
+  margin-top: 140px;
+
+  &-heading {
+    @include heading;
+    max-width: 328px;
+    margin-bottom: 50px;
+  }
+
+
+  .form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    max-width: 400px;
+    padding-inline: 16px;
+    margin: 0px auto;
+  }
+
+  .form-input {
+    outline: none;
+    color: $main-text;
+    border: 1px solid $text-grey;
+    width: 100%;
+    padding-left: 16px;
+    padding-block: 14px;
+    border-radius: 4px;
+    margin-bottom: 50px;
+
+    &:nth-child(3) {
+      margin-bottom: 43px;
+    }
+
+    &::placeholder {
+      color: $text-grey;
+    }
+  }
+}
+
+
+.radio-container {
+  align-self: flex-start;
+  flex-direction: column;
+  display: flex;
+  gap: 7px;
+  margin-bottom: 47px;
+
+  p {
+    color: $main-text;
+    margin-bottom: 11px;
+  }
+}
+
+input[type='file'], input[type='radio'] {
+  display: none;
+}
+
+.radio {
+  margin-left: 20px;
+  position: relative;
+  padding-left: 12px;
+  cursor: pointer;
+}
+
+.radio span{
+  height: 20px;
+  width: 20px;
+  display: block;
+  border-radius: 9999px;
+  border: 1px solid $text-grey;
+  position: absolute;
+  left: -20px;
+  top: 0px;
+
+  &::after {
+    content: '';
+    height: 10px;
+    width: 10px;
+    background: $aqua;
+    border-radius: 9999px;
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    transition: 200ms ease-in;
+  }
+}
+
+.radio input[type='radio']:checked ~ span {
+  border-color: $aqua;
+
+  &::after {
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+
+.custom-file-upload {
+  width: 100%;
+  display: flex;
+  margin-bottom: 50px;
+}
+
+
+.custom-file-upload span:nth-child(2) {
+  display: block;
+  padding: 14px 15px;
+  color: $main-text;
+  border: 1px solid $main-text;
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+}
+
+.custom-file-upload span:nth-child(3) {
+  display: block;
+  padding-block: 14px;
+  padding-left: 16px;
+  color: $text-grey;
+  border-bottom: 1px solid $text-grey;
+  border-top: 1px solid $text-grey;
+  border-right: 1px solid $text-grey;
+  border-top-right-radius: 4px;
+  border-bottom-right-radius: 4px;
+  flex: 1;
+}
+
+.form-button {
+  @include button;
+  padding: 4px 22px 4px 23px;
+  line-height: 26px;
+  margin-bottom: 100px;
+}
+
+
+
+@media screen and (min-width: 768px) {
+
+  .intro .dark {
+    padding-top: 89px;
+    padding-bottom: 88px;
+  }
+
+  .intro-heading, .intro-text {
+    max-width: 380px;
+  }
+
+
+  .users{
+
+    padding-inline: 32px;
+
+    &-heading {
+      max-width: unset;
+    }
+
+    &-cards {
+      grid-template-columns: repeat(2, 344px);
+      gap: 16px;
+    }
+  }
+
+  .form-section{
+
+    &-heading {
+      max-width: unset;
+    }
+  }
+}
+
+
+@media screen and (min-width: 1024px) {
+  .users{
+    &-cards {
+      grid-template-columns: repeat(3, 282px);
+      gap: 29px;
+    }
+  }
+}
+
+
+@media screen and (min-width: 1440px) {
+
+  .intro .dark {
+    padding-top: 164px;
+    padding-bottom: 163px;
+  }
+
+  .users{
+    &-cards {
+      grid-template-columns: repeat(3, 370px);
+    }
   }
 }
